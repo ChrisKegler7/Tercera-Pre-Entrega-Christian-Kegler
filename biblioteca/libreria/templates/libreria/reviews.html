@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>Reseñas</h2>
+
+    <div class="reseñas-list">
+        {% for review in reviews %}
+            <div class="reseña">
+                <h4>{{ review.usuario }} - {{ review.libro.titulo }}</h4>
+                <p>{{ review.comentario }}</p>
+                <p>Calificación: {{ review.calificacion }}</p>
+            </div>
+        {% empty %}
+            <p>No hay reseñas aún.</p>
+        {% endfor %}
+    </div>
+
+    <div class="agregar-reseña">
+        <h3>Agregar Reseña</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Agregar Reseña</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

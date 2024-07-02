@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+<h1>Agregar nuevo libro</h1>
+<form method="post">
+    {% csrf_token %}
+    
+    <h2>Nombre del libro</h2>
+    {{ libro_form.as_p }}
+
+    <h2>Autor</h2>
+    {{ autor_form.as_p }}
+    
+    <button type="submit">Guardar</button>
+</form>
+{% endblock content%}
